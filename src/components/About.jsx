@@ -1,10 +1,12 @@
 import React from 'react';
 import aboutSvg from '../assets/about.svg';
 import SectionTitle from './SectionTitle';
+import { useGlobalContext } from '../App';
 
 const About = () => {
+  const { aboutRef } = useGlobalContext();
   return (
-    <section className='bg-white py-20 ' id='about'>
+    <section className='bg-white py-20 ' ref={aboutRef}>
       <div className='align-elements grid md:grid-cols-2 items-center gap-16'>
         <img src={aboutSvg} className='w-full h-64' />
         <article>

@@ -6,4 +6,7 @@
   .align-elements {
     @apply mx-auto max-w-7xl px-8;
   }
+  .navlink {
+    @apply cursor-pointer;
+  }
 }

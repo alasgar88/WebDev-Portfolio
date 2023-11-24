@@ -1,6 +1,26 @@
 import { links } from '../data.jsx';
+import { useGlobalContext } from '../App.jsx';
 
 const Navbar = () => {
+  const { homeRef, skillsRef, aboutRef, projectsRef, scrollToRef } =
+    useGlobalContext();
+
+  function evaluateLink(linkText) {
+    switch (linkText) {
+      case 'home':
+        return homeRef;
+        break;
+      case 'skills':
+        return skillsRef;
+        break;
+      case 'about':
+        return aboutRef;
+        break;
+      case 'projects':
+        return projectsRef;
+        break;
+    }
+  }
   return (
     <nav className='bg-emerald-100'>
       <div className='align-elements py-4 flex flex-col sm:flex-row sm:gap-x-16 sm:items-center sm:py-8'>
@@ -13,8 +33,11 @@ const Navbar = () => {
             return (
               <a
                 key={id}
-                href={href}
-                className='capitalize text-lg tracking-wide hover:text-emerald-600 duration-300'
+                className='navlink capitalize text-lg tracking-wide hover:text-emerald-600 duration-300'
+                onClick={() => {
+                  const refContainer = evaluateLink(text);
+                  scrollToRef(refContainer);
+                }}
               >
                 {text}
               </a>
